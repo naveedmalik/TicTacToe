@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/activity_main"
+              android:id="@+id/activity_game"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical"
@@ -24,7 +24,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b1Function"
             android:textSize="120dp" />
 
         <Button
@@ -33,7 +32,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b2Function"
             android:textSize="120dp" />
 
         <Button
@@ -42,7 +40,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b3Function"
             android:textSize="120dp" />
     </LinearLayout>
 
@@ -57,7 +54,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b4Function"
             android:textSize="120dp" />
 
         <Button
@@ -66,7 +62,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b5Function"
             android:textSize="120dp" />
 
         <Button
@@ -75,7 +70,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b6Function"
             android:textSize="120dp" />
     </LinearLayout>
 
@@ -90,7 +84,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b7Function"
             android:textSize="120dp" />
 
         <Button
@@ -99,7 +92,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b8Function"
             android:textSize="120dp" />
 
         <Button
@@ -108,7 +100,6 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:onClick="b9Function"
             android:textSize="120dp" />
     </LinearLayout>
 </LinearLayout>

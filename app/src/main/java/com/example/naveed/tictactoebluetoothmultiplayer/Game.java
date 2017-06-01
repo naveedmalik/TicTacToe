@@ -7,29 +7,131 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.nio.charset.Charset;
+
 
 public class Game extends Activity
 {
-    Button b1,b2,b3,b4,b5, b6, b7, b8, b9;
-    String s1,s2,s3,s4,s5,s6,s7,s8,s9;
-    int player;
-    int draw = 0;
+    Main main;
+    BluetoothConnectionService bluetoothConnectionService;
+    static Button b1,b2,b3,b4,b5, b6, b7, b8, b9;
+    static String s1,s2,s3,s4,s5,s6,s7,s8,s9;
+    static int player;
+    static int draw = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        main = new Main();
         player = 1;
         creatingButtons();
+        //bluetoothConnectionService = main.getBluetoothClassObject();
+        bluetoothConnectionService = Main.getBluetoothClassObject();
+        b1.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b1Function();
+            }
+        });
+        b2.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b2Function();
+            }
+        });
+        b3.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b3Function();
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b4Function();
+            }
+        });
+        b5.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b5Function();
+            }
+        });
+        b6.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b6Function();
+            }
+        });
+        b7.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b7Function();
+            }
+        });
+        b8.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b8Function();
+            }
+        });
+        b9.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                b9Function();
+            }
+        });
     }
 
 
-    protected void b1Function(View v)
+    public void b1Func()
     {
+
+
+    }
+
+    protected void b1Function()
+    {
+
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b1".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
+
         draw++;
         if(b1.getText().toString().equalsIgnoreCase(""))
         {
@@ -47,8 +149,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b2Function(View v)
+    protected void b2Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b2".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b2.getText().toString().equalsIgnoreCase(""))
         {
@@ -67,8 +182,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b3Function(View v)
+    protected void b3Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b3".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b3.getText().toString().equalsIgnoreCase(""))
         {
@@ -87,8 +215,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b4Function(View v)
+    protected void b4Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b4".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b4.getText().toString().equalsIgnoreCase(""))
         {
@@ -107,8 +248,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b5Function(View v)
+    protected void b5Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b5".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b5.getText().toString().equalsIgnoreCase(""))
         {
@@ -127,8 +281,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b6Function(View v)
+    protected void b6Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b6".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b6.getText().toString().equalsIgnoreCase(""))
         {
@@ -147,8 +314,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b7Function(View v)
+    protected void b7Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b7".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b7.getText().toString().equalsIgnoreCase(""))
         {
@@ -167,8 +347,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b8Function(View v)
+    protected void b8Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b8".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b8.getText().toString().equalsIgnoreCase(""))
         {
@@ -187,8 +380,21 @@ public class Game extends Activity
         }
     }
 
-    protected void b9Function(View v)
+    protected void b9Function()
     {
+        if(bluetoothConnectionService == null)
+        {
+            Log.d("Naveed","Null Value");
+        }
+        byte[] bytes = "b9".getBytes(Charset.defaultCharset());
+        try
+        {
+            bluetoothConnectionService.write(bytes);
+        }
+        catch (Exception e)
+        {
+            Log.d("Naveed","Error");
+        }
         draw++;
         if(b9.getText().toString().equalsIgnoreCase(""))
         {
@@ -542,7 +748,7 @@ public class Game extends Activity
         }
     }
 
-    protected void initializeStrings()
+    protected static void initializeStrings()
     {
         s1 = b1.getText().toString();
         s2 = b2.getText().toString();
@@ -555,7 +761,7 @@ public class Game extends Activity
         s9 = b9.getText().toString();
     }
 
-    protected void emptyButtons()
+    protected static void emptyButtons()
     {
         b1.setText("");
         b2.setText("");

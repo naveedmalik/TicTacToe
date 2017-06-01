@@ -5,14 +5,19 @@ package com.example.naveed.tictactoebluetoothmultiplayer;
  */
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,17 +29,22 @@ import android.widget.Toast;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.UUID;
 
 public class Main extends Activity implements AdapterView.OnItemClickListener
 {
     private static final String TAG = "Main";
 
+    static Button startBtn;
     BluetoothAdapter mBluetoothAdapter;
     Button btnEnableDisable_Discoverable;
-    TextView incomingTxt;
+    static TextView incomingTxt;
+    Handler handler;
 
-    BluetoothConnectionService mBluetoothConnection;
+    AlertDialog.Builder builder;
+    AlertDialog dialog;
+    static BluetoothConnectionService mBluetoothConnection;
 
     Button btnStartConnection;
     Button btnSend;
@@ -58,7 +68,7 @@ public class Main extends Activity implements AdapterView.OnItemClickListener
 
     public void getIncomingText(String msg)
     {
-        Toast.makeText(this,msg,Toast.LENGTH_LONG);
+        Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
         Log.d("Naveed",msg);
         incomingTxt.setText(msg);
     }
@@ -197,6 +207,8 @@ public class Main extends Activity implements AdapterView.OnItemClickListener
         setContentView(R.layout.activity_main);
 
 
+        startBtn = (Button)findViewById(R.id.startGame);
+
         mBluetoothConnection = new BluetoothConnectionService(this);
         Button btnONOFF = (Button) findViewById(R.id.btnONOFF);
         btnEnableDisable_Discoverable = (Button) findViewById(R.id.btnDiscoverable_on_off);
@@ -212,10 +224,19 @@ public class Main extends Activity implements AdapterView.OnItemClickListener
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
         registerReceiver(mBroadcastReceiver4, filter);
 
-        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();// if device has bluetooth
 
         lvNewDevices.setOnItemClickListener(Main.this);
 
+        startBtn.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent intent = new Intent(Main.this,Game.class);
+                startActivity(intent);
+            }
+        });
 
         btnONOFF.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -245,6 +266,13 @@ public class Main extends Activity implements AdapterView.OnItemClickListener
 
     }
 
+
+
+    public static BluetoothConnectionService getBluetoothClassObject()
+    {
+        return mBluetoothConnection;
+    }
+
     //create method for starting connection
 //***remember the connection will fail and app will crash if you haven't paired first
     public void startConnection(){
@@ -258,10 +286,51 @@ public class Main extends Activity implements AdapterView.OnItemClickListener
         Log.d(TAG, "startBTConnection: Initializing RFCOM Bluetooth Connection.");
 
         mBluetoothConnection.startClient(device,uuid);
-        Intent intent = new Intent(Main.this,Game.class);
-        startActivity(intent);
+
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle("Start Game");
+        builder.setMessage("Press Start To Start Game");
+        builder.setPositiveButton("Start", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                   byte [] bytes =  "open".getBytes(Charset.defaultCharset());
+                    mBluetoothConnection.write(bytes);
+                Intent intent = new Intent(Main.this,Game.class);
+                startActivity(intent);
+            }
+        });
+        dialog = builder.create();
+        dialog.show();
     }
 
+    public void startGame()
+    {
+        builder = new AlertDialog.Builder(this);
+        Main.this.runOnUiThread(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+
+                builder.setTitle("Start Game");
+                builder.setMessage("Press Start To Start Game");
+                builder.setPositiveButton("Start", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        Intent intent = new Intent(Main.this,Game.class);
+                        startActivity(intent);
+                    }
+                });
+
+                dialog = builder.create();
+                dialog.show();
+            }
+        });
+    }
 
 
     public void enableDisableBT(){

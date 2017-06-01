@@ -14,63 +14,72 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <Button
-        android:text="ON/OFF"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:id="@+id/btnONOFF"/>
 
-    <Button
-        android:text="Enable Discoverable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnONOFF"
-        android:id="@+id/btnDiscoverable_on_off"
-        android:onClick="btnEnableDisable_Discoverable"/>
+        <Button
+            android:id="@+id/btnONOFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="ON/OFF"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnDiscoverable_on_off"
-        android:id="@+id/btnFindUnpairedDevices"
-        android:text="Discover"
-        android:onClick="btnDiscover"/>
+        <Button
+            android:id="@+id/btnDiscoverable_on_off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnONOFF"
+            android:onClick="btnEnableDisable_Discoverable"
+            android:text="Enable Discoverable"/>
 
-    <ListView
-        android:layout_marginTop="15dp"
-        android:layout_below="@+id/btnStartConnection"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/lvNewDevices"/>
+        <Button
+            android:id="@+id/btnFindUnpairedDevices"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnDiscoverable_on_off"
+            android:onClick="btnDiscover"
+            android:text="Discover"/>
 
-    <Button
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnFindUnpairedDevices"
-        android:id="@+id/btnStartConnection"
-        android:text="Start Connection"/>
+        <ListView
+            android:id="@+id/lvNewDevices"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/btnStartConnection"
+            android:layout_marginTop="15dp"/>
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:hint="Enter Text Here"
-        android:layout_below="@+id/lvNewDevices"
-        android:id="@+id/editText"/>
+        <Button
+            android:id="@+id/btnStartConnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnFindUnpairedDevices"
+            android:layout_marginTop="10dp"
+            android:text="Start Connection"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SEND"
-        android:id="@+id/btnSend"
-        android:layout_toRightOf="@+id/editText"
-        android:layout_below="@+id/lvNewDevices"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Incoming Message..."
-        android:id="@+id/incomingTxt"
-        android:layout_below="@id/btnSend"/>
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startGame"
+            android:hint="Enter Text Here"/>
+
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startGame"
+            android:layout_toRightOf="@+id/editText"
+            android:text="SEND"/>
+
+        <TextView
+            android:id="@+id/incomingTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText"
+            android:text="Incoming Message..."/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Game"
+            android:visibility="invisible"
+            android:id="@+id/startGame"
+            android:layout_below="@id/lvNewDevices"/>
     </RelativeLayout>
 </ScrollView>
